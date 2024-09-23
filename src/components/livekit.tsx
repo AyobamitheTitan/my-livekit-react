@@ -1,7 +1,6 @@
 import {
     LiveKitRoom,
     ParticipantName,
-    TrackMutedIndicator,
     RoomAudioRenderer,
     isTrackReference,
     useConnectionQualityIndicator,
@@ -10,8 +9,6 @@ import {
     GridLayout,
     useTracks,
     TrackRefContext,
-    useRoomInfo,
-    useRoomContext,
 
   } from '@livekit/components-react';
   import { ConnectionQuality, Room, Track } from 'livekit-client';
@@ -20,7 +17,7 @@ import {
   
   const CustomizeExample = () => {
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjcwODAyMTUsImlzcyI6IkFQSTNkVnFYNktIeVpQRCIsIm5iZiI6MTcyNzA3NjYxNSwic3ViIjoiRGFyaXVzIGZyZWVtYW4iLCJ2aWRlbyI6eyJjYW5QdWJsaXNoIjp0cnVlLCJjYW5QdWJsaXNoRGF0YSI6dHJ1ZSwiY2FuUHVibGlzaFNvdXJjZXMiOlsiY2FtZXJhIiwibWljcm9waG9uZSJdLCJyb29tIjoibmV3IHJvb20iLCJyb29tQWRtaW4iOnRydWUsInJvb21Kb2luIjp0cnVlfX0.FpbraOc_9s3mxJtvVC4rh-ae_n6YSJgEvwPB6FsSMbw"
-    const basic_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjcwODAzNzYsImlzcyI6IkFQSTNkVnFYNktIeVpQRCIsIm5iZiI6MTcyNzA3Njc3Niwic3ViIjoiRGFyaXVzIGZyZWVtYW4iLCJ2aWRlbyI6eyJjYW5QdWJsaXNoIjpmYWxzZSwiY2FuUHVibGlzaERhdGEiOmZhbHNlLCJyb29tIjoibmV3IHJvb20iLCJyb29tSm9pbiI6dHJ1ZX19.XW9LoZTN8mGRQVDz0TMdBGLcLTe1I-wB8nbXqkq28xA"
+    // const basic_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjcwODAzNzYsImlzcyI6IkFQSTNkVnFYNktIeVpQRCIsIm5iZiI6MTcyNzA3Njc3Niwic3ViIjoiRGFyaXVzIGZyZWVtYW4iLCJ2aWRlbyI6eyJjYW5QdWJsaXNoIjpmYWxzZSwiY2FuUHVibGlzaERhdGEiOmZhbHNlLCJyb29tIjoibmV3IHJvb20iLCJyb29tSm9pbiI6dHJ1ZX19.XW9LoZTN8mGRQVDz0TMdBGLcLTe1I-wB8nbXqkq28xA"
     const [room] = useState(new Room());
     
     const [connect, setConnect] = useState(false);
@@ -63,7 +60,6 @@ import {
   };
   
   export function Stage() {
-    const room = useRoomContext()
 
     const tracks = useTracks([
       Track.Source.Microphone,
